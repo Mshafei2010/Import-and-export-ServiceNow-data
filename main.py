@@ -72,12 +72,14 @@ if __name__ == "__main__":
     for item in responseJSON:
         print(str(item['user_name']) + " " + str(item['phone']) + " , " + str(item['email']) )
 
-
+    #Upload Data to ServiceNow
     for sheet_name, records in sheets.items():
         print(f"Sheet: {sheet_name}")
         for record in records:
             responseJSON = postRecordToServiceNow(instanceName, table, {'user_name': str(record['email']), 'phone': str(record['phone']) , 'email':str(record['email']), 'first_name':str(record['name']).split(" ")[0],'last_name':str(record['name']).split(" ")[1]}, user, pwd)
 
+    # Read Updated data from ServiceNow
     responseJSON = readServiceNowData(url,user,pwd)
     for item in responseJSON:
+
         print(str(item['user_name']) + " " + str(item['phone']) + " , " + str(item['email']) )
