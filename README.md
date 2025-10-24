@@ -19,7 +19,7 @@ Files
 test.py — main script (reads Excel, reads from ServiceNow, posts rows)
 Book1.xlsx — input workbook (placed at C:\Users\mshafei\Desktop\code\Book1.xlsx)
 variables.env or .env — environment variables file (kept out of source control)
-
+```
 Notes:
 
 SN_VERIFY_CERT=false disables SSL verification (INSECURE — only for testing).
@@ -31,13 +31,18 @@ Typical columns used in the script: name, email, phone (edit script mapping as r
 Usage
 Open PowerShell and run:
 
-Make sure variables.env is present and credentials are correct.
 
+
+Usage
+```
+Open PowerShell and run:
 
 # run
 python "C:\Users\mshafei\Desktop\code\test.py"
+```
+Make sure variables.env is present and credentials are correct.
 
-Behaviour
+# Behaviour
 Reads sheet rows, maps fields, posts each row to the ServiceNow table configured by SN_TABLE.
 Performs a GET to validate connection before posting.
 Prints success/errors for each row.
@@ -46,4 +51,5 @@ SSL errors (CERTIFICATE_VERIFY_FAILED): set SN_VERIFY_CERT=false (for quick test
 Unauthorized (401): check SN_USER / SN_PASS.
 Forbidden (403): account lacks permissions for the target table.
 Changes
+
 Edit test.py to change field mappings, target table, or to add more validation before posting.
